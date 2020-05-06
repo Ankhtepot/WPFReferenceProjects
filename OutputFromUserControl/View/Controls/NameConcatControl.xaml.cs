@@ -18,8 +18,6 @@ namespace OutputFromUserControl.View.Controls
     /// </summary>
     public partial class NameConcatControl : UserControl
     {
-
-
         public string NameInput {
             get { return (string)GetValue(NameInputProperty); }
             set { SetValue(NameInputProperty, value); }
@@ -48,6 +46,7 @@ namespace OutputFromUserControl.View.Controls
         public static string defaultNameOutput = "Name Output";
         public static readonly DependencyProperty NameOutputProperty =
             DependencyProperty.Register("NameOutput", typeof(string), typeof(NameConcatControl), new PropertyMetadata(defaultNameOutput));
+
 
         private static void SetNameOutput(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -80,13 +79,15 @@ namespace OutputFromUserControl.View.Controls
                 : control.SurnameInputTextBlock.Text;
             }
 
-            control.OutputNameTextBlock.Text = $"{nameInput} {surnameInput}";
+            string fullName = $"{nameInput} {surnameInput}";
+
+            control.OutputNameTextBlock.Text = fullName;
+            control.NameOutput = fullName;
         }
 
         public NameConcatControl()
         {
             InitializeComponent();
-            //DataContext = this;
         }
     }
 }

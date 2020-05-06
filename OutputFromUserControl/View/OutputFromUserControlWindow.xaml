@@ -39,7 +39,7 @@
                      />
                 <Label Content="Name Output from Control: " Grid.Row="2" Grid.Column="0"/>
                 <TextBlock Grid.Row="2" Grid.Column="1" 
-                     Text="{Binding ElementName=NameUC, Path=NameOutput}"
+                     Text="{Binding FullName}"
                      Width="200"
                      />
             </Grid>
@@ -49,6 +49,7 @@
             <uc:NameConcatControl x:Name="NameUC"
                                   NameInput="{Binding NameInput}" 
                                   SurnameInput="{Binding SurnameInput}"
+                                  NameOutput="{Binding FullName, Mode=TwoWay}"
                                   />
         </Border>
     </StackPanel>

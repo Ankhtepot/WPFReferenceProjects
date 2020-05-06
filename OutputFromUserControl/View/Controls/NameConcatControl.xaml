@@ -29,7 +29,7 @@
                    />
         <Label Content="Name Output: " Grid.Row="2" Grid.Column="0"/>
         <TextBlock Grid.Row="2" Grid.Column="1" 
-                   Text="{Binding NameOutput, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
+                   Text="{Binding NameOutput}"
                    x:Name="OutputNameTextBlock"
                    />
     </Grid>

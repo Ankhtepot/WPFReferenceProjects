@@ -28,13 +28,13 @@ namespace OutputFromUserControl.ViewModel
             }
         }
 
-        private string nameOutput;
+        private string fullName;
 
-        public string NameOutput {
-            get { return nameOutput; }
+        public string FullName {
+            get { return fullName; }
             set {
-                nameOutput = value;
-                OnPropertyChanged(nameof(NameOutput));
+                fullName = value;
+                OnPropertyChanged(nameof(FullName));
             }
         }
 
