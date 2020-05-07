@@ -1,0 +1,31 @@
+﻿<Window x:Class="AsyncAwait.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AsyncAwait"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="432.178" Width="800"
+        SizeChanged="Window_SizeChanged">
+    <StackPanel>
+        <Button Content="Execute"
+                x:Name="ExecuteButton"
+                Width="100"
+                Margin="0, 20, 0, 20"
+                FontSize="20"
+                Click="ExecuteButton_Click"/>
+        <Border BorderBrush="AliceBlue" BorderThickness="5" Margin="5">
+            <StackPanel Height="200" x:Name="ColorBlockWrapper">
+                <TextBlock x:Name="ColorBlock"
+               Width="100"
+               Height="100"
+               Background="Red"
+               Margin="0, 0, 670, 0"/>
+            </StackPanel>
+        </Border>
+        <TextBlock x:Name="StatusTextBlock"
+               Text="Ready to Execute"
+               HorizontalAlignment="Center"
+               FontSize="20" />
+    </StackPanel>
+</Window>
