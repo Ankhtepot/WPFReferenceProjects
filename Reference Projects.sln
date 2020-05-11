@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OutputFromUserControl", "Ou
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncAwait", "AsyncAwait\AsyncAwait.csproj", "{712703E9-7558-4385-B5B0-44206982649D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncFeedWithSpinner", "AsyncFeedWithSpinner\AsyncFeedWithSpinner.csproj", "{3E45A6F4-D3FC-4DBF-A3BE-7A32AF7EC1AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{712703E9-7558-4385-B5B0-44206982649D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{712703E9-7558-4385-B5B0-44206982649D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{712703E9-7558-4385-B5B0-44206982649D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E45A6F4-D3FC-4DBF-A3BE-7A32AF7EC1AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E45A6F4-D3FC-4DBF-A3BE-7A32AF7EC1AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E45A6F4-D3FC-4DBF-A3BE-7A32AF7EC1AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E45A6F4-D3FC-4DBF-A3BE-7A32AF7EC1AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

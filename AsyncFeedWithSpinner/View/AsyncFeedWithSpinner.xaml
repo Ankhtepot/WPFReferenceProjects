@@ -1,0 +1,64 @@
+﻿<Window x:Class="AsyncFeedWithSpinner.View.AsyncFeedWithSpinner"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:local="clr-namespace:AsyncFeedWithSpinner.View"
+        xmlns:vm="clr-namespace:AsyncFeedWithSpinner.ViewModel" 
+        xmlns:system="clr-namespace:System;assembly=System.Runtime"
+        xmlns:converters="clr-namespace:AsyncFeedWithSpinner.ViewModel.Converters"
+        mc:Ignorable="d"
+        Title="Async Feed With Spinner" 
+        Height="351" 
+        Width="351"
+        SizeToContent="Height"
+        >
+
+    <Window.Resources>
+        <vm:MainVM x:Key="MainVM"/>
+        <system:Double x:Key="WindowHeightAdjustement">300</system:Double>
+        <converters:WindowHeightConverter x:Key="WindowHeightConverter"/>
+    </Window.Resources>
+
+    <StackPanel DataContext="{StaticResource MainVM}" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20">
+        <Border BorderBrush="Coral" BorderThickness="1" CornerRadius="10" Margin="0,0,0,20">
+            <Label VerticalAlignment="Top" HorizontalAlignment="Center"
+               Content="{Binding Title}"
+               FontWeight="Bold"
+               FontSize="16"               
+               />
+        </Border>
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Button Content="Read Data"
+                    Margin="5"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Command="{Binding SpinSpinnerCommand}"
+                    />
+            <fa:ImageAwesome Icon="Cog" 
+                             Grid.Column="1" Grid.Row="0"
+                             Margin="10, 5"
+                             Height="30"
+                             Spin="{Binding SpinnerShouldSpin}"
+                             VerticalAlignment="Center" HorizontalAlignment="Center" 
+                         />
+
+            <ListBox Grid.Row="1"
+                     Grid.Column="0"
+                     Grid.ColumnSpan="2"
+                     MinHeight="100"
+                     x:Name="ReceivingListBox"
+                     ItemsSource="{Binding ReceivedStrings}"/>
+        </Grid>
+    </StackPanel>
+</Window>
