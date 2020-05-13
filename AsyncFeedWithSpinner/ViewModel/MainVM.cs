@@ -97,9 +97,7 @@ namespace AsyncFeedWithSpinner.ViewModel
 				currentProgress += progressStep;
 				worker.ReportProgress((int)currentProgress, s);
 				Thread.Sleep(200);
-			});
-			
-			SpinSpinner(false);
+			});					
 		}
 
 		/// <summary>
@@ -133,6 +131,7 @@ namespace AsyncFeedWithSpinner.ViewModel
 			}
 
 			Console.WriteLine($"BW-Completed status: {resultLabel}");
+			SpinSpinner(false);
 		}
 
 		public void SpinSpinner(bool shouldSpin)
