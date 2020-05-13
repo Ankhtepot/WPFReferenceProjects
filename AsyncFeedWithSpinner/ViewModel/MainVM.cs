@@ -5,8 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace AsyncFeedWithSpinner.ViewModel
 {
@@ -43,8 +42,6 @@ namespace AsyncFeedWithSpinner.ViewModel
 			SpinSpinnerCommand = new FetchDataCommand(this);
 
 			generateDummyData();
-
-			//dummyStringData.ForEach(s => ReceivedStrings.Add(s));
 		}
 
 		private void generateDummyData()
@@ -55,23 +52,93 @@ namespace AsyncFeedWithSpinner.ViewModel
 			}
 		}
 
-		public async void FetchData()
+		public void FetchData()
 		{
-			SpinSpinner();
-			ReceivedStrings.Add(await FetchDataAsync(dummyStringData));
-			SpinSpinner();
+			ReceivedStrings.Clear();
+
+			BackgroundWorker worker = new BackgroundWorker();
+			worker.DoWork += BackgroundWorker_DoWork;
+			worker.WorkerReportsProgress = true;
+			worker.ProgressChanged += BackgroundWorker_ProgressChanged;
+			worker.RunWorkerCompleted += BackgroundWorker_RunWorkerCompleted;
+			worker.RunWorkerAsync(new BackgrounWorkerState(dummyStringData));
 		}
 
-		private async Task<string> FetchDataAsync(List<string> dummyStringData)
+		/// <summary>
+		/// Wrapper class for BackgroundWorker RunWorkerAsync Argument
+		/// </summary>
+		sealed private class BackgrounWorkerState
 		{
-			await Task.Delay(5000);
-			return "jojo";
+			public List<string> stringList { get; private set; }
+
+			public BackgrounWorkerState(List<string> stringList)
+			{
+				this.stringList = stringList ?? throw new ArgumentNullException(nameof(stringList));
+			}
 		}
 
-		public void SpinSpinner()
+		/// <summary>
+		/// Cant update UI thread from DoWork so instead sending data into ProgressChanged
+		/// </summary>
+		/// <param name="sender">BackgroundWorker</param>
+		/// <param name="e"></param>
+		private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
 		{
-			SpinnerShouldSpin = !SpinnerShouldSpin;
-			Console.WriteLine($"MainVM/SpinSpinner: SpinnerShuldSpin is: {SpinnerShouldSpin}");
+			SpinSpinner(true);
+
+			var workingData = (e.Argument as BackgrounWorkerState).stringList;
+			BackgroundWorker worker = sender as BackgroundWorker;
+
+			double progressStep = (100 / workingData.Count);
+			double currentProgress = 0;
+
+			workingData.ForEach(s =>
+			{
+				currentProgress += progressStep;
+				worker.ReportProgress((int)currentProgress, s);
+				Thread.Sleep(200);
+			});
+			
+			SpinSpinner(false);
+		}
+
+		/// <summary>
+		/// e.UserState holds state data sent from DoWork
+		/// </summary>
+		/// <param name="sender">BackgroundWorker</param>
+		/// <param name="e"></param>
+		private void BackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+		{
+			if(e.UserState != null)
+			{
+				ReceivedStrings.Add((string)e.UserState);
+			}
+			Console.WriteLine($"BW-ProgressChanged: ProgressPercentage = {e.ProgressPercentage}");
+		}
+
+		private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+		{
+			var resultLabel = "";
+			if (e.Cancelled == true)
+			{
+				resultLabel = "Canceled!";
+			}
+			else if (e.Error != null)
+			{
+				resultLabel = "Error: " + e.Error.Message;
+			}
+			else
+			{
+				resultLabel = "Done!";
+			}
+
+			Console.WriteLine($"BW-Completed status: {resultLabel}");
+		}
+
+		public void SpinSpinner(bool shouldSpin)
+		{
+			SpinnerShouldSpin = shouldSpin;
+			Console.WriteLine($"MainVM/SpinSpinner: SpinnerShouldSpin is: {SpinnerShouldSpin}");
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;

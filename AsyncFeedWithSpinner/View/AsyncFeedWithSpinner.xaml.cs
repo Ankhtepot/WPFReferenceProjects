@@ -18,9 +18,12 @@ namespace AsyncFeedWithSpinner.View
     /// </summary>
     public partial class AsyncFeedWithSpinner : Window
     {
+        MainVM MainVM;
         public AsyncFeedWithSpinner()
         {
             InitializeComponent();
+            MainVM = new MainVM();
+            container.DataContext = MainVM;
         }
     }
 }

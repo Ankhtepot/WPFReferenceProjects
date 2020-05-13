@@ -5,23 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:local="clr-namespace:AsyncFeedWithSpinner.View"
-        xmlns:vm="clr-namespace:AsyncFeedWithSpinner.ViewModel" 
-        xmlns:system="clr-namespace:System;assembly=System.Runtime"
-        xmlns:converters="clr-namespace:AsyncFeedWithSpinner.ViewModel.Converters"
         mc:Ignorable="d"
         Title="Async Feed With Spinner" 
-        Height="351" 
-        Width="351"
+        Height="350" 
+        Width="350"
         SizeToContent="Height"
         >
 
-    <Window.Resources>
-        <vm:MainVM x:Key="MainVM"/>
-        <system:Double x:Key="WindowHeightAdjustement">300</system:Double>
-        <converters:WindowHeightConverter x:Key="WindowHeightConverter"/>
-    </Window.Resources>
-
-    <StackPanel DataContext="{StaticResource MainVM}" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20">
+    <StackPanel x:Name="container" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20">
         <Border BorderBrush="Coral" BorderThickness="1" CornerRadius="10" Margin="0,0,0,20">
             <Label VerticalAlignment="Top" HorizontalAlignment="Center"
                Content="{Binding Title}"
