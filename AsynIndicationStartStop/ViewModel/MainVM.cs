@@ -1,16 +1,19 @@
-﻿using AsynIndicationStartStop.Commands;
+﻿using AsynIndicationStartStop.ViewModel.Commands;
 using JetBrains.Annotations;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AsynIndicationStartStop.ViewModel
 {
     public class MainVM : INotifyPropertyChanged
     {
+        private const string PROGRESS = "Progress";
+        private const int PROGRESS_DELAY = 200;
+
         private string progressText;
 
         public string ProgressText
@@ -27,47 +30,65 @@ namespace AsynIndicationStartStop.ViewModel
             set { isRunning = value; OnPropertyChanged(); }
         }
 
+        private string title;
+
+        public string Title
+        {
+            get { return title; }
+            set { title = value; OnPropertyChanged(nameof(Title)); }
+        }
+
         public UpdateProgressCommand UpdateProgressCommand { get; set; }
 
         public MainVM()
         {
-            ProgressText = "Progress";
+            ProgressText = PROGRESS;
+            Title = "Async process looping till long working task finishes.";
 
             UpdateProgressCommand = new UpdateProgressCommand(this);
         }
 
         public async void RunProgressTextUpdate()
         {
-            IsRunning = !IsRunning; //TODO remake this to use cancelation token
+            var cts = new CancellationTokenSource();
 
-            if (IsRunning)
+            if (!IsRunning)
             {
-                UpdateProgressTextAsync();
-                string longTaskText = await Task.Run(() => LongTask());
+                IsRunning = true;
+                UpdateProgressTextTask(cts.Token);
+                string longTaskText = await Task.Run(() => LongTask(cts));
+                await Task.Delay(PROGRESS_DELAY);
                 ProgressText = longTaskText;
-            }
-            else
-            {
-                ProgressText = "Progress";
-            }
+                IsRunning = false;
+            }                  
         }
 
-        private async void UpdateProgressTextAsync()
+        private void UpdateProgressTextTask(CancellationToken token)
         {
-            while(IsRunning)
+            Task.Run(async () =>
             {
-                await Task.Delay(200);
-                var dotsCount = ProgressText.Count<char>(ch => ch == '.');
+                ProgressText = PROGRESS;
+                while (!token.IsCancellationRequested)
+                {
+                    await Task.Delay(PROGRESS_DELAY);
+                    var dotsCount = ProgressText.Count<char>(ch => ch == '.');
 
-               ProgressText = dotsCount < 6 ? ProgressText + "." : ProgressText.Replace(".", "");
-            }
+                    ProgressText = dotsCount < 6 ? ProgressText + "." : ProgressText.Replace(".", "");
+                }
+            });
+           
         }
 
-        private async Task<string> LongTask()
+        private string LongTask(CancellationTokenSource cts)
         {
-            await Task.Delay(5000);
-            IsRunning = false;
-            return "long task finished";
+            var result = Task.Run(async () =>
+            {
+                await Task.Delay(5000);
+                cts.Cancel();
+                return "Long task finished.";
+            });
+
+            return result.Result;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

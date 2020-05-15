@@ -3,24 +3,50 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:commands="clr-namespace:AsynIndicationStartStop.Commands"
+        xmlns:commands="clr-namespace:AsynIndicationStartStop.ViewModel.Commands"
+        xmlns:converters="clr-namespace:AsynIndicationStartStop.ViewModel.Converters"
         xmlns:local="clr-namespace:AsynIndicationStartStop.View"
         mc:Ignorable="d"
         Title="Async Indication Start Stop" Height="273" Width="440">
-    <Grid x:Name="container" VerticalAlignment="Center" HorizontalAlignment="Center"
-          >
+
+    <Window.Resources>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </Window.Resources>
+    
+    <Grid x:Name="container"  VerticalAlignment="Center" HorizontalAlignment="Center">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
-        <Button Grid.Column="0"
-                Content="Start/Stop"
-                Margin="10,0"
+        <Border BorderBrush="Coral" BorderThickness="1" CornerRadius="10" 
+                Grid.Row="0" Grid.ColumnSpan="2"
+                >
+            <Label VerticalAlignment="Stretch" HorizontalAlignment="Center"
+               Content="{Binding Title}"
+               FontSize="16"               
+               />
+        </Border>
+        <Button Grid.Column="0" Grid.Row="1" Margin="10, 20"
+                Content="Start Process"
                 HorizontalAlignment="Center"
                 Command="{Binding UpdateProgressCommand}"/>
-        <TextBlock Grid.Column="1"
+        <TextBlock Grid.Column="1" Grid.Row="1"
                    VerticalAlignment="Center"
                    Text="{Binding ProgressText}"/>
+        <Border BorderBrush="Coral" BorderThickness="1" CornerRadius="10" Margin="0,0,0,20"
+                Grid.Row="2" Grid.ColumnSpan="2"
+                Visibility="{Binding IsRunning, Converter={StaticResource BoolToVisibilityConverter}}"
+                >
+            <Label VerticalAlignment="Stretch" HorizontalAlignment="Center"
+               Content="Long working task is running."
+               FontSize="16"               
+               />
+        </Border>
     </Grid>
 </Window>

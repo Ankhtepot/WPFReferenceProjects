@@ -13,9 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncAwait", "AsyncAwait\As
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncFeedWithSpinner", "AsyncFeedWithSpinner\AsyncFeedWithSpinner.csproj", "{3E45A6F4-D3FC-4DBF-A3BE-7A32AF7EC1AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncTest", "AsyncTest\AsyncTest.csproj", "{CCFD99FC-9D3B-42F8-B0CA-2A54DDD37F29}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsynIndicationStartStop", "AsynIndicationStartStop\AsynIndicationStartStop.csproj", "{60E786C0-C513-4DB9-9D0A-7E70952C8F87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsynIndication", "AsynIndicationStartStop\AsynIndication.csproj", "{60E786C0-C513-4DB9-9D0A-7E70952C8F87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,10 +41,6 @@ Global
 		{3E45A6F4-D3FC-4DBF-A3BE-7A32AF7EC1AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E45A6F4-D3FC-4DBF-A3BE-7A32AF7EC1AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E45A6F4-D3FC-4DBF-A3BE-7A32AF7EC1AA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CCFD99FC-9D3B-42F8-B0CA-2A54DDD37F29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CCFD99FC-9D3B-42F8-B0CA-2A54DDD37F29}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CCFD99FC-9D3B-42F8-B0CA-2A54DDD37F29}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CCFD99FC-9D3B-42F8-B0CA-2A54DDD37F29}.Release|Any CPU.Build.0 = Release|Any CPU
 		{60E786C0-C513-4DB9-9D0A-7E70952C8F87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{60E786C0-C513-4DB9-9D0A-7E70952C8F87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60E786C0-C513-4DB9-9D0A-7E70952C8F87}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 
-namespace AsynIndicationStartStop.Commands
+namespace AsynIndicationStartStop.ViewModel.Commands
 {
     public class UpdateProgressCommand : ICommand
     {
