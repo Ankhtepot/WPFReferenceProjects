@@ -1,0 +1,26 @@
+﻿<Window x:Class="AsynIndicationStartStop.View.AsyncIndicationStartStopWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:commands="clr-namespace:AsynIndicationStartStop.Commands"
+        xmlns:local="clr-namespace:AsynIndicationStartStop.View"
+        mc:Ignorable="d"
+        Title="Async Indication Start Stop" Height="273" Width="440">
+    <Grid x:Name="container" VerticalAlignment="Center" HorizontalAlignment="Center"
+          >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Column="0"
+                Content="Start/Stop"
+                Margin="10,0"
+                HorizontalAlignment="Center"
+                Command="{Binding UpdateProgressCommand}"/>
+        <TextBlock Grid.Column="1"
+                   VerticalAlignment="Center"
+                   Text="{Binding ProgressText}"/>
+    </Grid>
+</Window>
