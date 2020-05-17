@@ -29,14 +29,16 @@
                 >
             <Label VerticalAlignment="Stretch" HorizontalAlignment="Center"
                Content="{Binding Title}"
-               FontSize="16"               
+               FontSize="25"               
                />
         </Border>
         <Button Grid.Column="0" Grid.Row="1" Margin="10, 20"
                 Content="Start Process"
                 HorizontalAlignment="Center"
+                FontSize="20"
                 Command="{Binding UpdateProgressCommand}"/>
         <TextBlock Grid.Column="1" Grid.Row="1"
+                   FontSize="20"
                    VerticalAlignment="Center"
                    Text="{Binding ProgressText}"/>
         <Border BorderBrush="Coral" BorderThickness="1" CornerRadius="10" Margin="0,0,0,20"
@@ -45,7 +47,7 @@
                 >
             <Label VerticalAlignment="Stretch" HorizontalAlignment="Center"
                Content="Long working task is running."
-               FontSize="16"               
+               FontSize="25"               
                />
         </Border>
     </Grid>

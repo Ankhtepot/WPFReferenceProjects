@@ -1,7 +1,4 @@
-﻿using AsynIndicationStartStop.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using System.Windows.Input;
 
 namespace AsynIndicationStartStop.ViewModel.Commands

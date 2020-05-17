@@ -57,7 +57,7 @@ namespace AsynIndicationStartStop.ViewModel
                 IsRunning = true;
                 UpdateProgressTextTask(cts.Token);
                 string longTaskText = await Task.Run(() => LongTask(cts));
-                await Task.Delay(PROGRESS_DELAY);
+                await Task.Delay(PROGRESS_DELAY); // Additional delay to prevent alternating finished text by looping task
                 ProgressText = longTaskText;
                 IsRunning = false;
             }                  
