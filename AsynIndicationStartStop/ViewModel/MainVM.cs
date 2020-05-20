@@ -48,7 +48,7 @@ namespace AsynIndicationStartStop.ViewModel
             UpdateProgressCommand = new UpdateProgressCommand(this);
         }
 
-        public async void RunProgressTextUpdate()
+        public async Task RunProgressTextUpdate()
         {
             var cts = new CancellationTokenSource();
 
