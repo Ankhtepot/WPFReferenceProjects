@@ -3,16 +3,23 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:GridView.View"
+        xmlns:uc="clr-namespace:GridViewRef.View.Controls"
+        xmlns:comands="clr-namespace:GridViewRef.Commands"
         mc:Ignorable="d"
-        Title="Grid View Component" Height="450" Width="800"
+        Title="Grid View Component" Height="450" Width="867"
         SizeToContent="WidthAndHeight"
         MinHeight="300"
+        MinWidth="880"
+        MaxWidth="900"
+        MaxHeight="700"
         >
     <Grid x:Name="TopContainer">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
         <Border BorderBrush="Coral" BorderThickness="1" CornerRadius="10" 
@@ -23,12 +30,50 @@
                FontSize="25"               
                />
         </Border>
-        <ListView x:Name="WrapingListView" Grid.Row="1">
-            <ListView.View>
-                <GridView>
-                    
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <uc:ListViewExtension Grid.Row="1"
+                              MatrixSource="{Binding SourceCollection}"/>
+        <Grid Grid.Row="2" HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            
+            <Button Content="Create Table" 
+                    Grid.Column="0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Margin="20"
+                FontWeight="Bold"
+                FontSize="25"
+                Command="{Binding FetchNextDataBatchCommand}"
+                />
+            <Label Grid.Column="1"
+                   VerticalAlignment="Center"
+                   FontSize="25"
+                Content="Number of Columns:"/>
+            <xctk:IntegerUpDown Grid.Column="2"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Value="{Binding ColumnCount}"
+                                FontSize="25"
+                                Margin="20"
+                                Width="70"
+                                />
+            <Label Grid.Column="3"
+                   VerticalAlignment="Center"
+                   FontSize="25"
+                Content="Number of Rows:"/>
+            <xctk:IntegerUpDown Grid.Column="4"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Value="{Binding RowCount}"
+                                FontSize="25"
+                                Margin="20"
+                                Width="70"
+                                />
+        </Grid>
     </Grid>
 </Window>

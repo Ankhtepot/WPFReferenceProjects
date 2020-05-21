@@ -1,16 +1,24 @@
-﻿using System;
+﻿using GridViewRef.Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
-namespace GridViewRef.Model
+namespace GridViewRef.View.Controls
 {
-    public class ListViewExtension : UserControl
+    /// <summary>
+    /// Interaction logic for ListViewExtension.xaml
+    /// </summary>
+    public partial class ListViewExtension : UserControl
     {
-
-
         public DataMatrix MatrixSource
         {
             get { return (DataMatrix)GetValue(MatrixSourceProperty); }
@@ -20,31 +28,19 @@ namespace GridViewRef.Model
         public static readonly DependencyProperty MatrixSourceProperty =
             DependencyProperty.Register("MatrixSource", typeof(DataMatrix), typeof(ListViewExtension), new PropertyMetadata(OnMatrixSourceChanged));
 
-
-
-        //public static readonly DependencyProperty MatrixSourceProperty =
-        //    DependencyProperty.RegisterAttached("MatrixSource",
-        //    typeof(DataMatrix), typeof(ListViewExtension),
-        //        new FrameworkPropertyMetadata(null,
-        //            new PropertyChangedCallback(OnMatrixSourceChanged)));
-
-        //public static DataMatrix GetMatrixSource(DependencyObject d)
-        //{
-        //    return (DataMatrix)d.GetValue(MatrixSourceProperty);
-        //}
-
-        //public static void SetMatrixSource(DependencyObject d, DataMatrix value)
-        //{
-        //    d.SetValue(MatrixSourceProperty, value);
-        //}
-
         private static void OnMatrixSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            ListView listView = d as ListView;
+            ListViewExtension control = d as ListViewExtension;
+
+            if (control.MainListView == null)
+            {
+                return;
+            }
+
             DataMatrix dataMatrix = e.NewValue as DataMatrix;
 
-            listView.ItemsSource = dataMatrix;
-            System.Windows.Controls.GridView gridView = listView.View as System.Windows.Controls.GridView;
+            control.MainListView.ItemsSource = dataMatrix;
+            System.Windows.Controls.GridView gridView = control.MainListView.View as System.Windows.Controls.GridView;
             int count = 0;
             gridView.Columns.Clear();
             foreach (var col in dataMatrix.Columns)
@@ -57,6 +53,11 @@ namespace GridViewRef.Model
                     });
                 count++;
             }
+        }
+
+        public ListViewExtension()
+        {
+            InitializeComponent();
         }
     }
 }

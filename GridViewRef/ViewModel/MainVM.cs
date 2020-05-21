@@ -1,4 +1,6 @@
-﻿using JetBrains.Annotations;
+﻿using GridViewRef.Commands;
+using GridViewRef.Model;
+using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,6 +12,8 @@ namespace GridView.ViewModel
 {
     public class MainVM : INotifyPropertyChanged
     {
+        private int batchNo = 0;
+
         private string title;
 
         public string Title
@@ -19,30 +23,70 @@ namespace GridView.ViewModel
         }
 
 
-        private ObservableCollection<ObservableCollection<string>> SourceCollection;
+        private DataMatrix sourceCollection;
+
+        public DataMatrix SourceCollection
+        {
+            get => sourceCollection;
+            set { sourceCollection = value; OnPropertyChanged(); }
+        }
+
+        private int columnCount;
+
+        public int ColumnCount
+        {
+            get { return columnCount; }
+            set { columnCount = value < 1 ? 1 : value; OnPropertyChanged(); }
+        }
+
+        private int rowCount;
+
+        public int RowCount
+        {
+            get { return rowCount; }
+            set { rowCount = value < 1 ? 1 : value; OnPropertyChanged(); }
+        }
+
+
+
+        public FetchNextDataBatchCommand FetchNextDataBatchCommand { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public MainVM()
         {
-            Title = "Grid View displaying Observable Collection of Observable Collections of strings.";
+            Title = "Dynamic creation of a table with ViewList and GridView.";
+            FetchNextDataBatchCommand = new FetchNextDataBatchCommand(this);
 
-            SourceCollection = generateData();
+            FetchNextDataBatch();
+
+            RowCount = ColumnCount = 1;
         }
 
-        private ObservableCollection<ObservableCollection<string>> generateData()
+        private DataMatrix generateData()
         {
-            ObservableCollection<ObservableCollection<string>> result = new ObservableCollection<ObservableCollection<string>>();
-            for (int i = 0; i < 5; i++)
+            List<object[]> rows = new List<object[]>();
+            for (int i = 0; i < RowCount; i++)
             {
-                var line = new ObservableCollection<string>();
-                for (int j = 0; j < 10; j++)
+                var line = new object[ColumnCount];
+                for (int j = 0; j < ColumnCount; j++)
                 {
-                    line.Add($"Data Entry Line: {i} Entry: {j}");
+                    line[j] = ($"Data Entry Line: {i+1} Entry: {j+1}");
                 }
-                result.Add(line);
+                rows.Add(line);
             }
-            return result;
+
+            List<MatrixColumn> columns = new List<MatrixColumn>();
+            for (int i = 0; i < ColumnCount; i++)
+            {
+                columns.Add(new MatrixColumn() {Name = $"Column {i+1}", StringFormat = String.Format("{0}", i)});
+            }
+            return new DataMatrix() { Columns = columns, Rows = rows };
+        }
+
+        public void FetchNextDataBatch()
+        {
+            SourceCollection = generateData();
         }
 
         [NotifyPropertyChangedInvocator]
