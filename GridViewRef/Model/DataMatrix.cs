@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace GridViewRef.Model
 {
-    public class DataMatrix : IEnumerable
+    public class DataMatrix 
     {
-        public List<MatrixColumn> Columns { get; set; }
+        public List<string> Columns { get; set; }
         public List<object[]> Rows { get; set; }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return new GenericEnumerator(Rows.ToArray());
-        }
     }
 }

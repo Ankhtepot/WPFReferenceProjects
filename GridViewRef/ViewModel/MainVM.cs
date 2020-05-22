@@ -1,12 +1,9 @@
 ﻿using GridViewRef.Commands;
 using GridViewRef.Model;
 using JetBrains.Annotations;
-using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace GridView.ViewModel
 {
@@ -58,9 +55,9 @@ namespace GridView.ViewModel
             Title = "Dynamic creation of a table with ViewList and GridView.";
             FetchNextDataBatchCommand = new FetchNextDataBatchCommand(this);
 
-            FetchNextDataBatch();
-
             RowCount = ColumnCount = 1;
+
+            FetchNextDataBatch();
         }
 
         private DataMatrix generateData()
@@ -76,10 +73,10 @@ namespace GridView.ViewModel
                 rows.Add(line);
             }
 
-            List<MatrixColumn> columns = new List<MatrixColumn>();
+            List<string> columns = new List<string>();
             for (int i = 0; i < ColumnCount; i++)
             {
-                columns.Add(new MatrixColumn() {Name = $"Column {i+1}", StringFormat = String.Format("{0}", i)});
+                columns.Add($"Column {i + 1}");
             }
             return new DataMatrix() { Columns = columns, Rows = rows };
         }

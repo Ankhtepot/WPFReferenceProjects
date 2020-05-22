@@ -1,16 +1,7 @@
 ﻿using GridViewRef.Model;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace GridViewRef.View.Controls
 {
@@ -39,7 +30,7 @@ namespace GridViewRef.View.Controls
 
             DataMatrix dataMatrix = e.NewValue as DataMatrix;
 
-            control.MainListView.ItemsSource = dataMatrix;
+            control.MainListView.ItemsSource = dataMatrix.Rows;
             System.Windows.Controls.GridView gridView = control.MainListView.View as System.Windows.Controls.GridView;
             int count = 0;
             gridView.Columns.Clear();
@@ -48,7 +39,7 @@ namespace GridViewRef.View.Controls
                 gridView.Columns.Add(
                     new GridViewColumn
                     {
-                        Header = col.Name,
+                        Header = col,
                         DisplayMemberBinding = new Binding($"[{count}]")
                     });
                 count++;
