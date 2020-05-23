@@ -1,7 +1,11 @@
 ﻿using GridViewRef.Model;
+using System.Windows.Interactivity;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Media;
+using Wpf.Behaviours;
 
 namespace GridViewRef.View.Controls
 {
@@ -36,13 +40,56 @@ namespace GridViewRef.View.Controls
             gridView.Columns.Clear();
             foreach (var col in dataMatrix.Columns)
             {
-                gridView.Columns.Add(
-                    new GridViewColumn
-                    {
-                        Header = col,
-                        DisplayMemberBinding = new Binding($"[{count}]")
-                    });
+                GridViewColumn gridViewVolumn = new GridViewColumn { Header = "IM" };
+                DataTemplate dataTemplate = new DataTemplate();
+
+                FrameworkElementFactory gridFrameworkFactory = new FrameworkElementFactory(typeof(Grid));
+                dataTemplate.VisualTree = gridFrameworkFactory;
+                FrameworkElementFactory textBlockFactory = new FrameworkElementFactory(typeof(TextBlock));
+
+                Binding newBinding = new Binding($"[{count}]");
+                textBlockFactory.SetBinding(TextBlock.TextProperty, newBinding);
+                textBlockFactory.SetValue(TextBlock.ForegroundProperty, new SolidColorBrush(Colors.Red));
+
+                gridFrameworkFactory.AppendChild(textBlockFactory);
+
+                gridViewVolumn.CellTemplate = dataTemplate;
+                gridViewVolumn.Header = col;
+
+                gridView.Columns.Add(gridViewVolumn);
+               
                 count++;
+            }
+
+            correctColumnWidths(control);
+        }
+
+        public static void correctColumnWidths(ListViewExtension control)
+        {
+            var mainListView = control.MainListView;
+
+            double remainingSpace = mainListView.ActualWidth;
+
+            var view = mainListView.View as System.Windows.Controls.GridView;
+
+            var lastColumnIndex = view.Columns.Count - 1;
+
+            if (remainingSpace > 0)
+            {
+                for (int i = 0; i < view.Columns.Count; i++)
+                {
+                    if (i != lastColumnIndex)
+                    {
+                        remainingSpace -= view.Columns[i].ActualWidth;
+                    }
+
+                    view.Columns[i].Width = remainingSpace;
+                }
+
+                //Leave 15 px free for scrollbar
+                remainingSpace -= 15;
+
+                view.Columns[lastColumnIndex].Width = remainingSpace;
             }
         }
 
