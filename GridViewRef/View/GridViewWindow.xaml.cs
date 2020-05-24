@@ -20,11 +20,6 @@ namespace GridView.View
     {
         private MainVM MainVM;
 
-        public GridViewComponentWindow(MainVM mainVM)
-        {
-            
-        }
-
         public GridViewComponentWindow()
         {
             InitializeComponent();

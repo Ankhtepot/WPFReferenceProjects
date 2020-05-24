@@ -41,7 +41,6 @@ namespace GridViewRef.View.Controls
                 var dataTemplate = new DataTemplate();
 
                 var gridFactory = new FrameworkElementFactory(typeof(Grid));
-                var gridColumnDefinitionFactory = new FrameworkElementFactory(typeof(ColumnDefinition));
                 var textBlockFactory = new FrameworkElementFactory(typeof(TextBlock));
 
                 dataTemplate.VisualTree = gridFactory;
@@ -51,12 +50,8 @@ namespace GridViewRef.View.Controls
                 textBlockFactory.SetValue(ForegroundProperty, new SolidColorBrush(Colors.Red));
                 textBlockFactory.SetValue(HorizontalAlignmentProperty, HorizontalAlignment.Stretch);
 
-                gridColumnDefinitionFactory.SetValue(WidthProperty, double.NaN);
-                gridColumnDefinitionFactory.SetValue(ColumnDefinition.SharedSizeGroupProperty, "sharedSizeGroup");
-
                 gridFactory.SetValue(WidthProperty, double.NaN);
                 gridFactory.SetValue(HorizontalAlignmentProperty, HorizontalAlignment.Stretch);
-                gridFactory.AppendChild(gridColumnDefinitionFactory);
                 gridFactory.AppendChild(textBlockFactory);
 
                 var newHeader = new GridViewColumnHeader();
@@ -72,7 +67,6 @@ namespace GridViewRef.View.Controls
                
                 count++;
             }
-
         }
 
         public ListViewExtension()

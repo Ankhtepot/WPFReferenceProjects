@@ -1,5 +1,4 @@
-﻿using GridViewRef.Commands;
-using GridViewRef.Model;
+﻿using GridViewRef.Model;
 using JetBrains.Annotations;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,8 +8,6 @@ namespace GridView.ViewModel
 {
     public class MainVM : INotifyPropertyChanged
     {
-        private int batchNo = 0;
-
         private string title;
 
         public string Title
@@ -33,7 +30,7 @@ namespace GridView.ViewModel
         public int ColumnCount
         {
             get { return columnCount; }
-            set { columnCount = value < 1 ? 1 : value; OnPropertyChanged(); }
+            set { columnCount = value < 1 ? 1 : value; CreateTable();  OnPropertyChanged(); }
         }
 
         private int rowCount;
@@ -41,23 +38,18 @@ namespace GridView.ViewModel
         public int RowCount
         {
             get { return rowCount; }
-            set { rowCount = value < 1 ? 1 : value; OnPropertyChanged(); }
+            set { rowCount = value < 1 ? 1 : value; CreateTable(); OnPropertyChanged(); }
         }
-
-
-
-        public FetchNextDataBatchCommand FetchNextDataBatchCommand { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public MainVM()
         {
             Title = "Dynamic creation of a table with ViewList and GridView.";
-            FetchNextDataBatchCommand = new FetchNextDataBatchCommand(this);
 
             RowCount = ColumnCount = 1;
 
-            FetchNextDataBatch();
+            CreateTable();
         }
 
         private DataMatrix generateData()
@@ -81,7 +73,7 @@ namespace GridView.ViewModel
             return new DataMatrix() { Columns = columns, Rows = rows };
         }
 
-        public void FetchNextDataBatch()
+        public void CreateTable()
         {
             SourceCollection = generateData();
         }

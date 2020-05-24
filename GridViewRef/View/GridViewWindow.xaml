@@ -6,7 +6,6 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:GridView.View"
         xmlns:uc="clr-namespace:GridViewRef.View.Controls"
-        xmlns:comands="clr-namespace:GridViewRef.Commands"
         mc:Ignorable="d"
         Title="Grid View Component" Height="450" Width="867"
         SizeToContent="WidthAndHeight"
@@ -38,23 +37,13 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
             
-            <Button Content="Create Table" 
-                    Grid.Column="0"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center"
-                Margin="20"
-                FontWeight="Bold"
-                FontSize="25"
-                Command="{Binding FetchNextDataBatchCommand}"
-                />
-            <Label Grid.Column="1"
+            <Label Grid.Column="0"
                    VerticalAlignment="Center"
                    FontSize="25"
                 Content="Number of Columns:"/>
-            <xctk:IntegerUpDown Grid.Column="2"
+            <xctk:IntegerUpDown Grid.Column="1"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 Value="{Binding ColumnCount}"
@@ -62,12 +51,12 @@
                                 Margin="20"
                                 Width="70"
                                 />
-            <Label Grid.Column="3"
+            <Label Grid.Column="2"
                    VerticalAlignment="Center"
                    FontSize="25"
                 Content="Number of Rows:"/>
-            <xctk:IntegerUpDown Grid.Column="4"
-                                HorizontalAlignment="Right"
+            <xctk:IntegerUpDown Grid.Column="3"
+                                HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 Value="{Binding RowCount}"
                                 FontSize="25"
