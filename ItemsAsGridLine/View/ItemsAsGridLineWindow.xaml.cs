@@ -23,7 +23,7 @@ namespace ItemsAsGridLine.View
         {
             InitializeComponent();
             MainVM = new MainVM();
-            DataContext = MainVM;
+            TopContainer.DataContext = MainVM;
         }
     }
 }

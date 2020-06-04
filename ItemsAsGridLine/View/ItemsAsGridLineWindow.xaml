@@ -4,9 +4,23 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ItemsAsGridLine.View"
+        xmlns:uc="clr-namespace:ItemsAsGridLine.View.Controls"
         mc:Ignorable="d"
         Title="Items As Grid Line" Height="450" Width="800">
-    <DataGrid >
-        
-    </DataGrid>
+    <Grid x:Name="TopContainer">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Border BorderBrush="Coral" BorderThickness="1" CornerRadius="10" Margin="0,0,0,20">
+            <Label VerticalAlignment="Top" HorizontalAlignment="Center"
+               Content="{Binding Title}"
+               FontWeight="Bold"
+               FontSize="16"               
+               />
+        </Border>
+        <uc:GridViewerControl Grid.Row="1"
+            LineSource="{Binding GridData}"/>
+    </Grid>
 </Window>
