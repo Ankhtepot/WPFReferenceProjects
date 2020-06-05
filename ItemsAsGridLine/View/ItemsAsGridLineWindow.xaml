@@ -6,9 +6,14 @@
         xmlns:local="clr-namespace:ItemsAsGridLine.View"
         xmlns:uc="clr-namespace:ItemsAsGridLine.View.Controls"
         mc:Ignorable="d"
-        Title="Items As Grid Line" Height="450" Width="800">
-    <Grid x:Name="TopContainer">
+        Title="Controls As Grid Line" Height="450" Width="800"
+        SizeToContent="WidthAndHeight"
+        MaxWidth="1000"
+        MaxHeight="800"
+        >
+    <Grid x:Name="TopContainer" HorizontalAlignment="Stretch">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
@@ -20,7 +25,17 @@
                FontSize="16"               
                />
         </Border>
-        <uc:GridViewerControl Grid.Row="1"
+        <uc:GridViewerControl Grid.Row="1" MinHeight="200"
             LineSource="{Binding GridData}"/>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Number of columns:"/>
+        </Grid>
     </Grid>
 </Window>

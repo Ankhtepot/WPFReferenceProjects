@@ -1,5 +1,4 @@
 ﻿using AsyncFeedWithSpinner.ViewModel.Commands;
-using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
