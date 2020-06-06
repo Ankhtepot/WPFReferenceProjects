@@ -42,7 +42,6 @@ namespace ItemsAsGridLine.ViewModel
         {
             ColumnCount = 5;
             RowCount = 5;
-            //generateGridData(5,5);
             Title = "Dynamic generation of Grid, with dynamic components generation.";
         }
 

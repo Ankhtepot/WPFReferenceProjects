@@ -9,7 +9,5 @@
     <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Stretch"
             x:Name="TopContainer"
             >
-        <Grid x:Name="MainGrid">
-        </Grid>
     </Border>
 </UserControl>

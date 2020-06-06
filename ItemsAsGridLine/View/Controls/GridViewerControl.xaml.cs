@@ -40,15 +40,10 @@ namespace ItemsAsGridLine.View.Controls
             var topContainer = control.TopContainer as Border;
             topContainer.Child = null;
 
-            //var actualWidthBinding = new Binding("ActualWidth");
-            //actualWidthBinding.RelativeSource = new RelativeSource(RelativeSourceMode.FindAncestor, typeof(Window), 1);
-
             var mainGrid = new Grid()
             {
                 HorizontalAlignment = HorizontalAlignment.Stretch,
             };
-
-            //mainGrid.SetBinding(WidthProperty, actualWidthBinding);
 
             for (int i = 0; i < newValue.Lines.Count; i++) // Line
             {
@@ -60,7 +55,7 @@ namespace ItemsAsGridLine.View.Controls
                 {
                     mainGrid.ColumnDefinitions.Add(new ColumnDefinition()
                     {
-                        //Width = GridLength.Auto,
+                        //Width = GridLength.Auto, //OR can use Auto
                         MaxWidth = 300d,
                         MinWidth = 150d
                     });
