@@ -1,15 +1,9 @@
 ﻿using ItemsAsGridLine.Model;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ItemsAsGridLine.View.Controls
@@ -43,40 +37,31 @@ namespace ItemsAsGridLine.View.Controls
                 return;
             }
 
-            var mainGrid = control.MainGrid;
+            var topContainer = control.TopContainer as Border;
+            topContainer.Child = null;
 
-            //var columnDefinition1 = new ColumnDefinition();
-            //var columnDefinition2 = new ColumnDefinition();
-            //columnDefinition1.Width = new GridLength(200);
-            //columnDefinition2.Width = new GridLength(200);
+            //var actualWidthBinding = new Binding("ActualWidth");
+            //actualWidthBinding.RelativeSource = new RelativeSource(RelativeSourceMode.FindAncestor, typeof(Window), 1);
 
-            //mainGrid.ColumnDefinitions.Add(columnDefinition1);
-            //mainGrid.ColumnDefinitions.Add(columnDefinition2);
-            //mainGrid.ShowGridLines = true;
+            var mainGrid = new Grid()
+            {
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+            };
 
-            //var textBlock1 = new TextBlock();
-            //textBlock1.Text = "testtest";
-            //var textBlock2 = new TextBlock();
-            //textBlock2.Text = "testtest";
-            //Grid.SetRow(textBlock1, 0);
-            //Grid.SetColumn(textBlock1, 0);
-            //Grid.SetRow(textBlock2, 0);
-            //Grid.SetColumn(textBlock2, 1);
-
-            //mainGrid.Children.Add(textBlock1);
-            //mainGrid.Children.Add(textBlock2);
+            //mainGrid.SetBinding(WidthProperty, actualWidthBinding);
 
             for (int i = 0; i < newValue.Lines.Count; i++) // Line
             {
                 UIElement newControl;
+                
                 mainGrid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
 
                 for (int j = 0; j < newValue.Lines[i].Count; j++) // Column
                 {
-                    //var columnDefinition = new ColumnDefinition
                     mainGrid.ColumnDefinitions.Add(new ColumnDefinition()
                     {
-                        Width = GridLength.Auto,
+                        //Width = GridLength.Auto,
+                        MaxWidth = 300d,
                         MinWidth = 150d
                     });
 
@@ -97,9 +82,9 @@ namespace ItemsAsGridLine.View.Controls
                     mainGrid.Children.Add(frame);
                     mainGrid.Children.Add(newControl);
                 }
-
-                
             }
+
+            topContainer.Child = mainGrid;
         }
 
         private static UIElement ResolveNewElement(ColumnConfig columnConfig, string content)

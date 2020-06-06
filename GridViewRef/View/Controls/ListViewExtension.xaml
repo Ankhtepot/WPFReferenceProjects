@@ -10,7 +10,6 @@
     <Grid>
         <ListView x:Name="MainListView" ItemsSource="{Binding MatrixSource}"
                   HorizontalAlignment="Stretch"
-                  Grid.IsSharedSizeScope="True"
                   >
             <ListView.View>
                 <GridView>

@@ -10,7 +10,6 @@ namespace ItemsAsGridLine.ViewModel
     public class MainVM : INotifyPropertyChanged
     {
         private string title;
-
         public string Title
         {
             get { return title; }
@@ -19,22 +18,37 @@ namespace ItemsAsGridLine.ViewModel
 
 
         private DataMatrix gridData;        
-
         public DataMatrix GridData
         {
             get { return gridData; }
             set { gridData = value; OnPropertyChanged(); }
         }
 
+        private int columnCount;
+        public int ColumnCount
+        {
+            get { return columnCount; }
+            set { columnCount = value < 1 ? 1 : value; generateGridData(RowCount, ColumnCount); OnPropertyChanged(); }
+        }
+
+        private int rowCount;
+        public int RowCount
+        {
+            get { return rowCount; }
+            set { rowCount = value < 1 ? 1 : value; generateGridData(RowCount, ColumnCount); OnPropertyChanged(); }
+        }
 
         public MainVM()
         {
-            GridData = generateGridData(5,5);
+            ColumnCount = 5;
+            RowCount = 5;
+            //generateGridData(5,5);
             Title = "Dynamic generation of Grid, with dynamic components generation.";
         }
 
-        private DataMatrix generateGridData(int rowCount = 1, int columnCount = 1)
+        private void generateGridData(int rowCount = 1, int columnCount = 1)
         {
+            GridData = new DataMatrix();
             rowCount = rowCount.Clamp(1,1000);
             columnCount = columnCount.Clamp(1,20);
 
@@ -56,7 +70,7 @@ namespace ItemsAsGridLine.ViewModel
                 lines.Add(line);
             }
 
-            return new DataMatrix { Lines = lines, ColumnConfigurations = columnConfigs};
+            GridData = new DataMatrix { Lines = lines, ColumnConfigurations = columnConfigs};
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

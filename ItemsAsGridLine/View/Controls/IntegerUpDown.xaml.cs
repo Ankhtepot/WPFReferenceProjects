@@ -1,11 +1,10 @@
 ﻿using Prism.Commands;
-using System;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace GridViewRef.View.Controls
+namespace ItemsAsGridLine.View.Controls
 {
     /// <summary>
     /// Interaction logic for IntegerUpDown.xaml

@@ -6,7 +6,9 @@
              xmlns:local="clr-namespace:ItemsAsGridLine.View.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Border BorderBrush="Black" BorderThickness="1">
+    <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Stretch"
+            x:Name="TopContainer"
+            >
         <Grid x:Name="MainGrid">
         </Grid>
     </Border>

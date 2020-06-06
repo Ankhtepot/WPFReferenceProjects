@@ -8,7 +8,6 @@ namespace GridView.ViewModel
     public class MainVM : INotifyPropertyChanged
     {
         private string title;
-
         public string Title
         {
             get { return title; }
@@ -17,7 +16,6 @@ namespace GridView.ViewModel
 
 
         private DataMatrix sourceCollection;
-
         public DataMatrix SourceCollection
         {
             get => sourceCollection;
@@ -25,7 +23,6 @@ namespace GridView.ViewModel
         }
 
         private int columnCount;
-
         public int ColumnCount
         {
             get { return columnCount; }
@@ -33,7 +30,6 @@ namespace GridView.ViewModel
         }
 
         private int rowCount;
-
         public int RowCount
         {
             get { return rowCount; }
