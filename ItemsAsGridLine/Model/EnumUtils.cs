@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Printing;
-using System.Text;
 
 namespace ItemsAsGridLine.Model
 {
@@ -11,7 +8,10 @@ namespace ItemsAsGridLine.Model
         {
             var type = typeof(TEnum);
 
-            if (!type.IsEnum) throw new InvalidCastException($"{type} is not an Enum.");
+            if (!type.IsEnum)
+            {
+                throw new InvalidCastException($"{type} is not an Enum.");
+            }
 
             var enumValues = Enum.GetValues(type);
             return (TEnum)enumValues.GetValue(new Random().Next(0, enumValues.Length));

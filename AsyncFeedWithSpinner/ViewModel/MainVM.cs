@@ -47,7 +47,7 @@ namespace AsyncFeedWithSpinner.ViewModel
 		{
 			for (int i = 0; i < 20; i++)
 			{
-				dummyStringData.Add($"Dummy string data, line: {i}");
+				dummyStringData.Add($"Dummy string data, line: {i + 1}");
 			}
 		}
 
@@ -61,19 +61,6 @@ namespace AsyncFeedWithSpinner.ViewModel
 			worker.ProgressChanged += BackgroundWorker_ProgressChanged;
 			worker.RunWorkerCompleted += BackgroundWorker_RunWorkerCompleted;
 			worker.RunWorkerAsync(new BackgrounWorkerState(dummyStringData));
-		}
-
-		/// <summary>
-		/// Wrapper class for BackgroundWorker RunWorkerAsync Argument
-		/// </summary>
-		sealed private class BackgrounWorkerState
-		{
-			public List<string> stringList { get; private set; }
-
-			public BackgrounWorkerState(List<string> stringList)
-			{
-				this.stringList = stringList ?? throw new ArgumentNullException(nameof(stringList));
-			}
 		}
 
 		/// <summary>
@@ -144,6 +131,19 @@ namespace AsyncFeedWithSpinner.ViewModel
 		protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+		}
+
+		/// <summary>
+		/// Wrapper class for BackgroundWorker RunWorkerAsync Argument
+		/// </summary>
+		sealed private class BackgrounWorkerState
+		{
+			public List<string> stringList { get; private set; }
+
+			public BackgrounWorkerState(List<string> stringList)
+			{
+				this.stringList = stringList ?? throw new ArgumentNullException(nameof(stringList));
+			}
 		}
 	}
 }

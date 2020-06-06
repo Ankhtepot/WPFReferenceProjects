@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
-using static ItemsAsGridLine.Model.Enums;
 
 namespace ItemsAsGridLine.Model
 {
@@ -24,7 +22,10 @@ namespace ItemsAsGridLine.Model
             set { columnConfigurations = value; OnPropertyChanged(); }
         }
 
-        public DataMatrix() : this(new List<List<string>>() { new List<string>() { "" } }, new List<ColumnConfig>() { new ColumnConfig() })
+        public DataMatrix() : this(new List<List<string>>() 
+        {
+            new List<string>() { "" } },
+            new List<ColumnConfig>() { new ColumnConfig() })
         {}
 
         public DataMatrix(List<List<string>> lines, List<ColumnConfig> columnConfigurations)

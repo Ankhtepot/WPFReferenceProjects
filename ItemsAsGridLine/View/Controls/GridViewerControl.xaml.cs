@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -15,8 +14,14 @@ namespace ItemsAsGridLine.View.Controls
     {
         private static readonly DataMatrix DEFAULT_LINE = new DataMatrix
         {
-            Lines = new List<List<string>>() { new List<string>() { "" } },
-            ColumnConfigurations = new List<ColumnConfig>() { new ColumnConfig() }
+            Lines = new List<List<string>>() 
+                {
+                    new List<string>() { "" } 
+                },
+                ColumnConfigurations = new List<ColumnConfig>() 
+                {
+                    new ColumnConfig() 
+                }
         };
 
         public DataMatrix LineSource
