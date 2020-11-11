@@ -28,8 +28,7 @@
                    x:Name="SurnameInputTextBlock"
                    />
         <Label Content="Name Output: " Grid.Row="2" Grid.Column="0"/>
-        <TextBlock Grid.Row="2" Grid.Column="1" 
-                   Text="{Binding NameOutput}"
+        <TextBlock Grid.Row="2" Grid.Column="1"
                    x:Name="OutputNameTextBlock"
                    />
     </Grid>

@@ -1,0 +1,27 @@
+﻿<Window x:Class="GridViewSimple.View.GridViewView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GridViewSimple.View"
+        xmlns:vm="clr-namespace:GridViewSimple.ViewModel"
+        xmlns:m="clr-namespace:GridViewSimple.Model"
+        mc:Ignorable="d"
+        Title="Simple Grid View" Height="450" Width="800" d:DataContext="{d:DesignInstance vm:GridViewVM}">
+
+    <Window.DataContext>
+        <vm:GridViewVM></vm:GridViewVM>
+    </Window.DataContext>
+
+    <Grid x:Name="TopContainer">
+        <ListView ItemsSource="{Binding SourceList}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" d:DataContext="{d:DesignInstance m:DataObject}" DisplayMemberBinding="{Binding FirstName}"></GridViewColumn>
+                    <GridViewColumn Header="Surname" d:DataContext="{d:DesignInstance m:DataObject}" DisplayMemberBinding="{Binding Surname}"></GridViewColumn>
+                    <GridViewColumn Header="Age" d:DataContext="{d:DesignInstance m:DataObject}" DisplayMemberBinding="{Binding Age}"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>

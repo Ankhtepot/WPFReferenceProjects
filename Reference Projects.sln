@@ -17,7 +17,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsynIndication", "AsynIndic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GridViewRef", "GridViewRef\GridViewRef.csproj", "{7433B7D9-55F2-477B-ABFC-BE6A72FDAEC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemsAsGridLine", "ItemsAsGridLine\ItemsAsGridLine.csproj", "{E7FE0F0E-6243-4855-9403-654BD28BD85A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ItemsAsGridLine", "ItemsAsGridLine\ItemsAsGridLine.csproj", "{E7FE0F0E-6243-4855-9403-654BD28BD85A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ButtonRadioGroup", "ButtonRadioGroup\ButtonRadioGroup.csproj", "{68D1439A-D2FF-499E-87C3-0A02B1D20668}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GridViewSimple", "GridViewSimple\GridViewSimple.csproj", "{CEF99951-6581-4FF6-A55B-971D52206F31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnglePickerControl", "AnglePickerControl\AnglePickerControl.csproj", "{806FB7C0-F2AF-4A06-9548-0C829964323C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +63,18 @@ Global
 		{E7FE0F0E-6243-4855-9403-654BD28BD85A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7FE0F0E-6243-4855-9403-654BD28BD85A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7FE0F0E-6243-4855-9403-654BD28BD85A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68D1439A-D2FF-499E-87C3-0A02B1D20668}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68D1439A-D2FF-499E-87C3-0A02B1D20668}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68D1439A-D2FF-499E-87C3-0A02B1D20668}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68D1439A-D2FF-499E-87C3-0A02B1D20668}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEF99951-6581-4FF6-A55B-971D52206F31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEF99951-6581-4FF6-A55B-971D52206F31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEF99951-6581-4FF6-A55B-971D52206F31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEF99951-6581-4FF6-A55B-971D52206F31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{806FB7C0-F2AF-4A06-9548-0C829964323C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{806FB7C0-F2AF-4A06-9548-0C829964323C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{806FB7C0-F2AF-4A06-9548-0C829964323C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{806FB7C0-F2AF-4A06-9548-0C829964323C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

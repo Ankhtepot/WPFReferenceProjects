@@ -72,7 +72,6 @@ namespace OutputFromUserControl.View.Controls
             string fullName = $"{nameInput} {surnameInput}";
 
             control.OutputNameTextBlock.Text = fullName;
-            control.NameOutput = fullName;
         }
 
         public NameConcatControl()
