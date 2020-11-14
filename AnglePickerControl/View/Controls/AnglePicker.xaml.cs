@@ -1,18 +1,17 @@
 ﻿namespace AnglePickerControl.View.Controls
 {
+    using System;
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
     using System.Windows;
+    using System.Windows.Input;
     using System.Windows.Media;
     using AnglePickerControl.Annotations;
-    using System;
-    using System.Windows.Controls;
-    using System.Windows.Input;
 
     /// <summary>
     /// Interaction logic for AnglePicker.xaml
     /// </summary>
-    public partial class AnglePicker : UserControl, INotifyPropertyChanged
+    public partial class AnglePicker : INotifyPropertyChanged
     {
         private Point center = new Point(50,50);
 
