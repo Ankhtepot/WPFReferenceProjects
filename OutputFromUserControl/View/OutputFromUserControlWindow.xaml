@@ -28,19 +28,27 @@
 
                 <Label Content="Name Input: " Grid.Row="0" Grid.Column="0"/>
                 <TextBox Grid.Row="0" Grid.Column="1" 
+                         Name="FirstnameInput"
                      Text="{Binding NameInput, UpdateSourceTrigger=PropertyChanged}"
                      Width="200"
                      />
                 <Label Content="Surname Input: " Grid.Row="1" Grid.Column="0"/>
                 <TextBox Grid.Row="1" Grid.Column="1" 
+                         Name="SurnameInput"
                      Text="{Binding SurnameInput, UpdateSourceTrigger=PropertyChanged}"
                      Width="200"
                      />
                 <Label Content="Name Output from Control: " Grid.Row="2" Grid.Column="0"/>
                 <TextBlock Grid.Row="2" Grid.Column="1" 
-                     Text="{Binding FullName}"
-                     Width="200"
-                     />
+                           Width="200"
+                     >
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="{}{0} {1}">
+                            <Binding ElementName="FirstnameInput" Path="Text"></Binding>
+                            <Binding ElementName="SurnameInput" Path="Text"></Binding>
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
             </Grid>
         </Border>
         <Label Content="User Control:" Margin="0,10,0,0"/>
