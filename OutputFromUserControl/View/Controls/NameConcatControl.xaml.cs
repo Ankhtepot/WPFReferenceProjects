@@ -9,8 +9,8 @@ namespace OutputFromUserControl.View.Controls
     public partial class NameConcatControl : UserControl
     {
         public string NameInput {
-            get { return (string)GetValue(NameInputProperty); }
-            set { SetValue(NameInputProperty, value); }
+            get => (string)GetValue(NameInputProperty);
+            set => SetValue(NameInputProperty, value);
         }
 
         public static string defaultNameInput = "NameInput";
@@ -19,8 +19,8 @@ namespace OutputFromUserControl.View.Controls
 
 
         public string SurnameInput {
-            get { return (string)GetValue(SurnameInputProperty); }
-            set { SetValue(SurnameInputProperty, value); }
+            get => (string)GetValue(SurnameInputProperty);
+            set => SetValue(SurnameInputProperty, value);
         }
 
         public static string defaultSurnameInput = "Surname Input";
@@ -42,8 +42,8 @@ namespace OutputFromUserControl.View.Controls
         {
             NameConcatControl control = (NameConcatControl)d;
 
-            string nameInput = "";
-            string surnameInput = "";
+            string nameInput = string.Empty;
+            string surnameInput = string.Empty;
 
             if(e.Property.Name == "NameInput")
             {

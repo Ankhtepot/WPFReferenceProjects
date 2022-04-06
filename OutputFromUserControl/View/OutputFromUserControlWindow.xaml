@@ -3,17 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:OutputFromUserControl.View"
         xmlns:uc="clr-namespace:OutputFromUserControl.View.Controls"
         xmlns:vm="clr-namespace:OutputFromUserControl.ViewModel"
         mc:Ignorable="d"
-        Title="Output From User Control" Height="450" Width="800">
+        Title="Output From User Control" Height="350" Width="600">
 
     <Window.DataContext>
         <vm:MainVM x:Name="MainVM"/>
     </Window.DataContext>
     
-    <StackPanel HorizontalAlignment="Left">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         <Label Content="Form elements:"/>
         <Border CornerRadius="5" BorderBrush="Blue" BorderThickness="1">
             <Grid HorizontalAlignment="Left" >

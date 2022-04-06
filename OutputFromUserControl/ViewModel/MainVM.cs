@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
+﻿using System.ComponentModel;
 
 namespace OutputFromUserControl.ViewModel
 {
@@ -21,7 +18,7 @@ namespace OutputFromUserControl.ViewModel
         private string surnameInput;
 
         public string SurnameInput {
-            get { return surnameInput; }
+            private get => surnameInput;
             set {
                 surnameInput = value;
                 OnPropertyChanged(nameof(SurnameInput));
@@ -31,7 +28,7 @@ namespace OutputFromUserControl.ViewModel
         private string fullName;
 
         public string FullName {
-            get { return fullName; }
+            get => fullName;
             set {
                 fullName = value;
                 OnPropertyChanged(nameof(FullName));
