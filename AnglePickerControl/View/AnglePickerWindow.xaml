@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         Title="Angle Picker Control" Height="450" Width="800"
         SizeToContent="WidthAndHeight"
-        d:DataContext="{d:DesignInstance vm:MainVM}">
+        d:DataContext="{d:DesignInstance vm:MainVm}">
 
     <Window.Resources>
         <Style TargetType="Button" x:Key="AngleButtonStyle">

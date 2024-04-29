@@ -4,16 +4,16 @@
     using System.Runtime.CompilerServices;
     using Prism.Commands;
 
-    public class MainVM : INotifyPropertyChanged
+    public class MainVm : INotifyPropertyChanged
     {
-        private double angle;
+        private double _angle;
 
         public double Angle
         {
-            get => angle;
+            get => _angle;
             set
             {
-                angle = value;
+                _angle = value;
                 OnPropertyChanged();
             }
         }
@@ -21,7 +21,7 @@
         public DelegateCommand RiseAngleCommand { get; }
         public DelegateCommand LowerAngleCommand { get; }
 
-        public MainVM()
+        public MainVm()
         {
             Angle = 0.0;
 

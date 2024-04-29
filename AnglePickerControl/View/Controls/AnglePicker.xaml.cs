@@ -6,23 +6,23 @@
     using System.Windows;
     using System.Windows.Input;
     using System.Windows.Media;
-    using AnglePickerControl.Annotations;
+    using Annotations;
 
     /// <summary>
     /// Interaction logic for AnglePicker.xaml
     /// </summary>
     public partial class AnglePicker : INotifyPropertyChanged
     {
-        private Point center = new Point(50,50);
+        private Point _center = new Point(50,50);
 
-        private double reverseAngle;
+        private double _reverseAngle;
 
         public double ReverseAngle
         {
-            get => reverseAngle;
+            get => _reverseAngle;
             set
             {
-                reverseAngle = value;
+                _reverseAngle = value;
                 OnPropertyChanged();
             }
         }
@@ -33,7 +33,7 @@
             set => SetValue(AngleProperty, value);
         }
         public static readonly DependencyProperty AngleProperty =
-            DependencyProperty.Register("Angle", typeof(double), typeof(AnglePicker), new PropertyMetadata(0d, AngleChanged));
+            DependencyProperty.Register(nameof(Angle), typeof(double), typeof(AnglePicker), new PropertyMetadata(0d, AngleChanged));
 
         public Brush BackgroundOuter
         {
@@ -41,7 +41,7 @@
             set => SetValue(BackgroundOuterProperty, value);
         }
         public static readonly DependencyProperty BackgroundOuterProperty =
-            DependencyProperty.Register("BackgroundOuter", typeof(Brush), typeof(AnglePicker), new PropertyMetadata(Brushes.Transparent));
+            DependencyProperty.Register(nameof(BackgroundOuter), typeof(Brush), typeof(AnglePicker), new PropertyMetadata(Brushes.Transparent));
 
         public Brush BackgroundInner
         {
@@ -49,7 +49,7 @@
             set => SetValue(BackgroundInnerProperty, value);
         }
         public static readonly DependencyProperty BackgroundInnerProperty =
-            DependencyProperty.Register("BackgroundInner", typeof(Brush), typeof(AnglePicker), new PropertyMetadata(Brushes.Transparent));
+            DependencyProperty.Register(nameof(BackgroundInner), typeof(Brush), typeof(AnglePicker), new PropertyMetadata(Brushes.Transparent));
 
         public Brush StrokeCircle
         {
@@ -57,7 +57,7 @@
             set => SetValue(StrokeCircleProperty, value);
         }
         public static readonly DependencyProperty StrokeCircleProperty =
-            DependencyProperty.Register("StrokeCircle", typeof(Brush), typeof(AnglePicker), new PropertyMetadata(Brushes.Black));
+            DependencyProperty.Register(nameof(StrokeCircle), typeof(Brush), typeof(AnglePicker), new PropertyMetadata(Brushes.Black));
 
         public Brush StrokeAngleLine
         {
@@ -65,7 +65,7 @@
             set => SetValue(StrokeAngleLineProperty, value);
         }
         public static readonly DependencyProperty StrokeAngleLineProperty =
-            DependencyProperty.Register("StrokeAngleLine", typeof(Brush), typeof(AnglePicker), new PropertyMetadata(Brushes.Black));
+            DependencyProperty.Register(nameof(StrokeAngleLine), typeof(Brush), typeof(AnglePicker), new PropertyMetadata(Brushes.Black));
 
         private static void AngleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -95,8 +95,8 @@
 
         private double CountAngle(Point clickedPoint)
         {
-            double deltaX = clickedPoint.X - center.X;
-            double deltaY = center.Y - clickedPoint.Y;
+            double deltaX = clickedPoint.X - _center.X;
+            double deltaY = _center.Y - clickedPoint.Y;
             double result = Math.Atan2(deltaY, deltaX) * 180 / Math.PI;
             return result < 0 ? (360d + result) : result;
         }

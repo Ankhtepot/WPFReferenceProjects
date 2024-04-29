@@ -1,23 +1,17 @@
-﻿using System.Windows;
-
-namespace AnglePickerControl.View
+﻿namespace AnglePickerControl.View
 {
-    using AnglePickerControl.ViewModel;
+    using ViewModel;
 
     /// <summary>
     /// Interaction logic for AnglePickerWindow.xaml
     /// </summary>
-    public partial class AnglePickerWindow : Window
+    public partial class AnglePickerWindow
     {
-        private MainVM mainVM;
-
         public AnglePickerWindow()
         {
             InitializeComponent();
 
-            mainVM = new MainVM();
-
-            TopContainer.DataContext = mainVM;
+            TopContainer.DataContext = new MainVm();
         }
 
         /// <summary>
