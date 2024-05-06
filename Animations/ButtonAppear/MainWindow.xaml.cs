@@ -18,13 +18,13 @@ namespace ButtonAnimationExample
 
         private void TriggerButton_Click(object sender, RoutedEventArgs e)
         {
-            _storyboardButtonShow.Begin(targetButton);
+            _storyboardButtonShow.Begin(TargetButton);
             _storyboardButtonHide.Begin(TriggerButton);
         }
 
         private void TargetButton_OnClick(object sender, RoutedEventArgs e)
         {
-            _storyboardButtonHide.Begin(targetButton);
+            _storyboardButtonHide.Begin(TargetButton);
             _storyboardButtonShow.Begin(TriggerButton);
         }
     }

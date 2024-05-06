@@ -73,7 +73,7 @@
             </Button.RenderTransform>
         </Button>
         <!-- Button to appear with animation -->
-        <Button x:Name="targetButton" Content="Animated Button" 
+        <Button x:Name="TargetButton" Content="Animated Button" 
                 Grid.Row="1"
                 Opacity="0"
                 Click="TargetButton_OnClick"
