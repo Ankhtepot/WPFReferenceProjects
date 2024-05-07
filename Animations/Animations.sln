@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ButtonAppear", "ButtonAppear\ButtonAppear.csproj", "{56996C5B-F595-4272-A9CF-C8BC874DA050}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Animations", "Animations\Animations.csproj", "{56996C5B-F595-4272-A9CF-C8BC874DA050}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

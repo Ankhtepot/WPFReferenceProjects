@@ -11,7 +11,7 @@ namespace ButtonAnimationExample
         public MainWindow()
         {
             InitializeComponent();
-
+            // Access animations from the merged resource dictionary
             _storyboardButtonShow = (Storyboard) FindResource("StoryboardButtonShow");
             _storyboardButtonHide = (Storyboard) FindResource("StoryboardButtonHide");
         }
